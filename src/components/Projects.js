@@ -8,7 +8,7 @@ class Projects extends Component {
     if (this.props.projects) {
       projectItems = this.props.projects.map(project => {
         return (
-          <ProjectItem key={project.title} project={project}/>
+          <ProjectItem id={project.id} key={project.title} project={project} onDelete={this.handleDelete.bind(this)}/>
         )
       })
     }
@@ -18,6 +18,11 @@ class Projects extends Component {
         {projectItems}
       </div>
     );
+  }
+
+  handleDelete(id) {
+    console.log('Projects handleDelete id=' + id)
+    this.props.onDeleteProjectItem(id)
   }
 }
 
